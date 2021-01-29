@@ -9,10 +9,10 @@ import Home from './containers/Home'
 import Cart from './containers/Cart'
 
 const Routes = () => {
-  const [shoppingCart, setShoppingCart] = useState([])
+  const [shoppingCart, setShoppingCart] = useState({})
 
   useEffect(() => {
-    console.log({ shoppingCart })
+    console.log(shoppingCart)
   }, [shoppingCart])
   return (
     <Router>
@@ -24,7 +24,7 @@ const Routes = () => {
 
       <Switch>
         <Route exact path='/'>
-          <Home setShoppingCart={setShoppingCart} />
+          <Home setShoppingCart={setShoppingCart} shoppingCart={shoppingCart} />
         </Route>
         <Route exact path='/cart'>
           <Cart shoppingCart={shoppingCart} />

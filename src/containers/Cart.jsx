@@ -1,9 +1,15 @@
 import React from 'react'
 
-const Cart = () => {
+const Cart = ({ shoppingCart }) => {
+  console.log(Object.entries(shoppingCart))
   return (
     <div>
-      <h1>Cart</h1>
+      {Object.entries(shoppingCart).map(item => (
+        <div key={item[1].product}>
+          <h3>{item[1].product}</h3>
+          <p>{item[1].qty}</p>
+        </div>
+      ))}
     </div>
   )
 }
