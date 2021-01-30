@@ -8,7 +8,6 @@ const ProductItem = ({ shoppingCart, setShoppingCart, product }) => {
     const existItem = shoppingCart.cartItems.find(
       x => x.product === product.name
     )
-
     if (existItem) {
       setShoppingCart({
         cartItems: shoppingCart.cartItems.map(x =>
@@ -17,7 +16,15 @@ const ProductItem = ({ shoppingCart, setShoppingCart, product }) => {
       })
     } else {
       setShoppingCart({
-        cartItems: [...shoppingCart.cartItems, { product: product.name, qty }],
+        cartItems: [
+          ...shoppingCart.cartItems,
+          {
+            product: product.name,
+            path: product.path,
+            price: product.price,
+            qty,
+          },
+        ],
       })
     }
   }

@@ -19,7 +19,7 @@ const Routes = () => {
           <Home setShoppingCart={setShoppingCart} shoppingCart={shoppingCart} />
         </Route>
         <Route exact path='/cart'>
-          <Cart shoppingCart={shoppingCart} />
+          <Cart setShoppingCart={setShoppingCart} shoppingCart={shoppingCart} />
         </Route>
       </Switch>
     </Router>

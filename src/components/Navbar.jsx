@@ -3,6 +3,7 @@ import '../styles/Navbar.scss'
 import { AiOutlineShoppingCart } from 'react-icons/ai'
 
 const Navbar = ({ totalItems }) => {
+  console.log(totalItems)
   return (
     <header>
       <nav className='navbar'>
