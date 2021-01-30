@@ -8,9 +8,13 @@ import ScrollToTop from './components/ScrollToTop'
 const App = () => {
   const [shoppingCart, setShoppingCart] = useState({ cartItems: [] })
   const [totalItems, setTotalItems] = useState(0)
+
   useEffect(() => {
-    setTotalItems(shoppingCart.cartItems.reduce((a, b) => a + b.qty, 0))
+    setTotalItems(
+      shoppingCart.cartItems.reduce((acc, item) => acc + item.qty, 0)
+    )
   }, [shoppingCart])
+
   return (
     <Router>
       <Navbar totalItems={totalItems} />
@@ -22,19 +26,18 @@ const App = () => {
           render={props => (
             <Home
               {...props}
-              setShoppingCart={setShoppingCart}
               shoppingCart={shoppingCart}
+              setShoppingCart={setShoppingCart}
             />
           )}
         ></Route>
         <Route
-          exact
           path='/cart'
           render={props => (
             <Cart
               {...props}
-              setShoppingCart={setShoppingCart}
               shoppingCart={shoppingCart}
+              setShoppingCart={setShoppingCart}
             />
           )}
         ></Route>

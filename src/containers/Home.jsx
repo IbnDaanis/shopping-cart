@@ -1,9 +1,9 @@
-import React from 'react'
+import PropTypes from 'prop-types'
 import ProductItem from '../components/ProductItem'
 import { products } from '../data/products'
 import '../styles/Home.scss'
 
-const Home = ({ setShoppingCart, shoppingCart }) => {
+const Home = ({ shoppingCart, setShoppingCart }) => {
   return (
     <section className='home'>
       <h1 className='title noselect'>Home</h1>
@@ -19,6 +19,11 @@ const Home = ({ setShoppingCart, shoppingCart }) => {
       </div>
     </section>
   )
+}
+
+Home.propTypes = {
+  shoppingCart: PropTypes.object,
+  setShoppingCart: PropTypes.func,
 }
 
 export default Home

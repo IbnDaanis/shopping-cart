@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import '../styles/Cart.scss'
 import { BsFillTrashFill } from 'react-icons/bs'
 const Cart = ({ shoppingCart, setShoppingCart, history }) => {
@@ -35,7 +36,6 @@ const Cart = ({ shoppingCart, setShoppingCart, history }) => {
                   <span>Quantity: </span>
                   <select
                     value={item.qty}
-                    min={1}
                     onChange={({ target }) => updateQuantity(target, index)}
                   >
                     {[1, 2, 3, 4, 5, 6, 8, 9, 10].map(number => (
@@ -64,7 +64,7 @@ const Cart = ({ shoppingCart, setShoppingCart, history }) => {
           <h2 className='total'>
             Total: £
             {shoppingCart.cartItems
-              .reduce((a, b) => a + b.qty * b.price, 0)
+              .reduce((acc, item) => acc + item.qty * item.price, 0)
               .toFixed(2)}
           </h2>
           <button
@@ -80,6 +80,12 @@ const Cart = ({ shoppingCart, setShoppingCart, history }) => {
       )}
     </section>
   )
+}
+
+Cart.propTypes = {
+  shoppingCart: PropTypes.object,
+  setShoppingCart: PropTypes.func,
+  history: PropTypes.object,
 }
 
 export default Cart

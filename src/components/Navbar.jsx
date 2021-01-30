@@ -1,4 +1,5 @@
 import { NavLink, Link } from 'react-router-dom'
+import PropTypes from 'prop-types'
 import '../styles/Navbar.scss'
 import { AiOutlineShoppingCart } from 'react-icons/ai'
 
@@ -30,6 +31,10 @@ const Navbar = ({ totalItems }) => {
       </nav>
     </header>
   )
+}
+
+Navbar.propTypes = {
+  totalItems: PropTypes.number,
 }
 
 export default Navbar

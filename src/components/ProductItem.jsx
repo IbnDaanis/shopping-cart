@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import PropTypes from 'prop-types'
 import '../styles/ProductItem.scss'
 
 const ProductItem = ({ shoppingCart, setShoppingCart, product }) => {
@@ -7,12 +8,12 @@ const ProductItem = ({ shoppingCart, setShoppingCart, product }) => {
     if (qty > 10) return
     setQty(qty => qty + 1)
     const existItem = shoppingCart.cartItems.find(
-      x => x.product === product.name
+      item => item.product === product.name
     )
     if (existItem) {
       setShoppingCart({
-        cartItems: shoppingCart.cartItems.map(x =>
-          x.product === existItem.product ? { ...x, qty } : x
+        cartItems: shoppingCart.cartItems.map(item =>
+          item.product === existItem.product ? { ...item, qty } : item
         ),
       })
     } else {
@@ -48,6 +49,12 @@ const ProductItem = ({ shoppingCart, setShoppingCart, product }) => {
       </div>
     </div>
   )
+}
+
+ProductItem.propTypes = {
+  shoppingCart: PropTypes.object,
+  setShoppingCart: PropTypes.func,
+  product: PropTypes.object,
 }
 
 export default ProductItem
