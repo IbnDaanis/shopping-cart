@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import Home from './containers/Home'
 import Cart from './containers/Cart'
 import Navbar from './components/Navbar'
+import ScrollToTop from './components/ScrollToTop'
 
 const Routes = () => {
   const [shoppingCart, setShoppingCart] = useState({ cartItems: [] })
@@ -14,6 +15,7 @@ const Routes = () => {
   return (
     <Router>
       <Navbar totalItems={totalItems} />
+      <ScrollToTop />
       <Switch>
         <Route exact path='/'>
           <Home setShoppingCart={setShoppingCart} shoppingCart={shoppingCart} />
