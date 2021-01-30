@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
+import '../styles/ProductItem.scss'
 
 const ProductItem = ({ shoppingCart, setShoppingCart, product }) => {
   const [qty, setQty] = useState(1)
@@ -21,10 +22,23 @@ const ProductItem = ({ shoppingCart, setShoppingCart, product }) => {
     }
   }
   return (
-    <>
-      <h2>{product.name}</h2>
-      <button onClick={() => handleClick(product)}>Add to Cart</button>
-    </>
+    <div className='product'>
+      <div className='product-image'>
+        <img src={product.path} alt={product.name} />
+      </div>
+      <div className='product-details'>
+        <h2 className='product-details-title'>{product.name}</h2>
+        <h3 className='product-details-price'>£{product.price.toFixed(2)}</h3>
+      </div>
+      <div className='add-to-cart'>
+        <button
+          className='add-to-cart-button'
+          onClick={() => handleClick(product)}
+        >
+          Add to Cart
+        </button>
+      </div>
+    </div>
   )
 }
 
