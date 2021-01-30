@@ -1,6 +1,6 @@
 # Shopping Cart
 
-**Check out** the app [here](https://ibndaanis.github.io/shopping-cart/)
+**Check out** the app [here](https://ibndaanis-shopping-cart.netlify.app/)
 
 ### Features of this app:
 
