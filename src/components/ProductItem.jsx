@@ -11,7 +11,7 @@ const ProductItem = ({ shoppingCart, setShoppingCart, product }) => {
     if (existItem) {
       setShoppingCart({
         cartItems: shoppingCart.cartItems.map(x =>
-          x.product === existItem.product ? { product: product.name, qty } : x
+          x.product === existItem.product ? { ...x, qty } : x
         ),
       })
     } else {
