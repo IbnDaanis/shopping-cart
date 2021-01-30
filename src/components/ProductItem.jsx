@@ -4,6 +4,7 @@ import '../styles/ProductItem.scss'
 const ProductItem = ({ shoppingCart, setShoppingCart, product }) => {
   const [qty, setQty] = useState(1)
   const handleClick = product => {
+    if (qty > 10) return
     setQty(qty => qty + 1)
     const existItem = shoppingCart.cartItems.find(
       x => x.product === product.name

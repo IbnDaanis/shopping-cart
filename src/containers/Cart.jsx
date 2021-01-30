@@ -1,7 +1,6 @@
 import '../styles/Cart.scss'
 import { BsFillTrashFill } from 'react-icons/bs'
-const Cart = ({ shoppingCart, setShoppingCart }) => {
-  console.log(shoppingCart.cartItems)
+const Cart = ({ shoppingCart, setShoppingCart, history }) => {
   const updateQuantity = (target, index) => {
     setShoppingCart({
       cartItems: shoppingCart.cartItems.map((x, i) =>
@@ -60,12 +59,25 @@ const Cart = ({ shoppingCart, setShoppingCart }) => {
           </>
         )}
       </div>
-      <h2 className='total'>
-        Total: £
-        {shoppingCart.cartItems
-          .reduce((a, b) => a + b.qty * b.price, 0)
-          .toFixed(2)}
-      </h2>
+      {shoppingCart.cartItems.length > 0 && (
+        <div className='checkout'>
+          <h2 className='total'>
+            Total: £
+            {shoppingCart.cartItems
+              .reduce((a, b) => a + b.qty * b.price, 0)
+              .toFixed(2)}
+          </h2>
+          <button
+            className='place-order'
+            onClick={() => {
+              setShoppingCart({ cartItems: [] })
+              history.push('/')
+            }}
+          >
+            Place Order
+          </button>
+        </div>
+      )}
     </section>
   )
 }

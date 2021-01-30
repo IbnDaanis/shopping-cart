@@ -103,8 +103,33 @@
       }
     }
   }
-  .total {
-    margin: 2rem 10px 0 0;
-    text-align: right;
+  .checkout {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .total {
+      margin: 2rem 0 0;
+      @media (max-width: 700px) {
+        margin: 0;
+      }
+    }
+    .place-order {
+      margin: 1rem 0 0;
+      display: block;
+      width: 150px;
+      height: 50px;
+      background: #f2c352;
+      color: black;
+      border: 0;
+      font-size: 1rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      border-radius: 3px;
+      transition: 0.2s ease-in-out;
+      &:hover {
+        filter: brightness(1.1);
+      }
+    }
   }
 }
