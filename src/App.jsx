@@ -10,8 +10,9 @@ import Cart from './containers/Cart'
 
 const Routes = () => {
   const [shoppingCart, setShoppingCart] = useState({ cartItems: [] })
-
+  const [totalItems, setTotalItems] = useState(0)
   useEffect(() => {
+    setTotalItems(shoppingCart.cartItems.reduce((a, b) => a + b.qty, 0))
     console.log(shoppingCart)
   }, [shoppingCart])
   return (
@@ -19,7 +20,7 @@ const Routes = () => {
       <header>
         <NavLink to='/'>Home</NavLink>
         <br />
-        <NavLink to='/cart'>Cart</NavLink>
+        <NavLink to='/cart'>Cart {totalItems}</NavLink>
       </header>
 
       <Switch>
