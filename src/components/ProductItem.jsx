@@ -4,10 +4,21 @@ const ProductItem = ({ shoppingCart, setShoppingCart, product }) => {
   const [qty, setQty] = useState(1)
   const handleClick = product => {
     setQty(qty => qty + 1)
-    setShoppingCart(shoppingCart => ({
-      ...shoppingCart,
-      [product.name]: { product: product.name, qty },
-    }))
+    const existItem = shoppingCart.cartItems.find(
+      x => x.product === product.name
+    )
+
+    if (existItem) {
+      setShoppingCart({
+        cartItems: shoppingCart.cartItems.map(x =>
+          x.product === existItem.product ? { product: product.name, qty } : x
+        ),
+      })
+    } else {
+      setShoppingCart({
+        cartItems: [...shoppingCart.cartItems, { product: product.name, qty }],
+      })
+    }
   }
   return (
     <>

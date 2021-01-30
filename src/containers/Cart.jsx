@@ -1,13 +1,13 @@
 import React from 'react'
 
 const Cart = ({ shoppingCart }) => {
-  console.log(Object.entries(shoppingCart))
+  console.log(shoppingCart.cartItems)
   return (
     <div>
-      {Object.entries(shoppingCart).map(item => (
-        <div key={item[1].product}>
-          <h3>{item[1].product}</h3>
-          <p>{item[1].qty}</p>
+      {shoppingCart.cartItems.map(item => (
+        <div className='item' key={item.product}>
+          <h2>{item.product}</h2>
+          <p>{item.qty}</p>
         </div>
       ))}
     </div>

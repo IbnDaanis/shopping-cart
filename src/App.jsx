@@ -9,7 +9,7 @@ import Home from './containers/Home'
 import Cart from './containers/Cart'
 
 const Routes = () => {
-  const [shoppingCart, setShoppingCart] = useState({})
+  const [shoppingCart, setShoppingCart] = useState({ cartItems: [] })
 
   useEffect(() => {
     console.log(shoppingCart)
