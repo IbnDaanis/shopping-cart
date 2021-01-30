@@ -19,4 +19,14 @@ export const products = [
     price: 149,
     path: './assets/product-images/leather-weekender.webp',
   },
+  {
+    name: 'Macbook Sleeve',
+    price: 99,
+    path: './assets/product-images/macbook-sleeve.webp',
+  },
+  {
+    name: 'iPhone Case',
+    price: 59,
+    path: './assets/product-images/iphone-case.webp',
+  },
 ]
