@@ -10,4 +10,4 @@
 
 ## Preview:
 
-![Preview](./assets/preview.png)
+![Preview](./public/assets/preview.png)
