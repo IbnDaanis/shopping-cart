@@ -24,7 +24,7 @@ const ProductItem = ({ shoppingCart, setShoppingCart, product }) => {
   return (
     <div className='product'>
       <div className='product-image'>
-        <img src={product.path} alt={product.name} />
+        <img src={product.path} alt={product.name} draggable='false' />
       </div>
       <div className='product-details'>
         <h2 className='product-details-title'>{product.name}</h2>
