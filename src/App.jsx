@@ -13,7 +13,11 @@ const App = () => {
         <ScrollToTop />
         <Switch>
           <Route exact path='/' render={props => <Home {...props} />}></Route>
-          <Route path='/cart' render={props => <Cart {...props} />}></Route>
+          <Route
+            exact
+            path='/cart'
+            render={props => <Cart {...props} />}
+          ></Route>
         </Switch>
       </Router>
     </CartContext>

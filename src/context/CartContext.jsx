@@ -6,15 +6,16 @@ const CartContext = ({ children }) => {
   const initialShoppingCart = JSON.parse(
     localStorage.getItem('shoppingCart')
   ) || { cartItems: [] }
-  const [shoppingCart, setShoppingCart] = useState(initialShoppingCart)
 
+  const [shoppingCart, setShoppingCart] = useState(initialShoppingCart)
   const [totalItems, setTotalItems] = useState(0)
 
   useEffect(() => {
-    console.log({ shoppingCart, totalItems })
-    setTotalItems(
-      shoppingCart.cartItems.reduce((acc, item) => acc + item.qty, 0)
+    const itemCount = shoppingCart.cartItems.reduce(
+      (acc, item) => acc + item.qty,
+      0
     )
+    setTotalItems(itemCount)
     localStorage.setItem('shoppingCart', JSON.stringify(shoppingCart))
   }, [shoppingCart, totalItems])
 

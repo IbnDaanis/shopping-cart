@@ -1,11 +1,12 @@
 import PropTypes from 'prop-types'
 import { useContext } from 'react'
-import { BsFillTrashFill } from 'react-icons/bs'
+import { ProductItemInCart } from '../components/ProductItem'
 import { CartItemsContext } from '../context/CartContext'
 import '../styles/Cart.scss'
 
 const Cart = ({ history }) => {
   const { shoppingCart, setShoppingCart } = useContext(CartItemsContext)
+
   const updateQuantity = (target, index) => {
     setShoppingCart({
       cartItems: shoppingCart.cartItems.map((x, i) =>
@@ -31,34 +32,13 @@ const Cart = ({ history }) => {
         ) : (
           <>
             {shoppingCart.cartItems.map((item, index) => (
-              <div className='item' key={item.product}>
-                <div className='product-img'>
-                  <img src={item.path} alt={item.product} />
-                </div>
-                <h2 className='product-name'>{item.product}</h2>
-                <div className='product-qty'>
-                  <span>Quantity: </span>
-                  <select
-                    value={item.qty}
-                    onChange={({ target }) => updateQuantity(target, index)}
-                  >
-                    {[1, 2, 3, 4, 5, 6, 8, 9, 10].map(number => (
-                      <option key={number} value={number}>
-                        {number}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-                <p className='product-total-price'>
-                  Total: <span>£{(item.price * item.qty).toFixed(2)}</span>
-                </p>
-                <button
-                  className='delete-btn'
-                  onClick={() => removeProductFromCart(item)}
-                >
-                  <BsFillTrashFill />
-                </button>
-              </div>
+              <ProductItemInCart
+                key={index}
+                item={item}
+                index={index}
+                updateQuantity={updateQuantity}
+                removeProductFromCart={removeProductFromCart}
+              />
             ))}
           </>
         )}
