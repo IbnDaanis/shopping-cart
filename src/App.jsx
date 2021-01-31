@@ -4,6 +4,7 @@ import Home from './containers/Home'
 import Cart from './containers/Cart'
 import Navbar from './components/Navbar'
 import ScrollToTop from './components/ScrollToTop'
+import CartContext from './context/CartContext'
 
 const App = () => {
   const [shoppingCart, setShoppingCart] = useState({ cartItems: [] })
@@ -19,29 +20,31 @@ const App = () => {
     <Router>
       <Navbar totalItems={totalItems} />
       <ScrollToTop />
-      <Switch>
-        <Route
-          exact
-          path='/'
-          render={props => (
-            <Home
-              {...props}
-              shoppingCart={shoppingCart}
-              setShoppingCart={setShoppingCart}
-            />
-          )}
-        ></Route>
-        <Route
-          path='/cart'
-          render={props => (
-            <Cart
-              {...props}
-              shoppingCart={shoppingCart}
-              setShoppingCart={setShoppingCart}
-            />
-          )}
-        ></Route>
-      </Switch>
+      <CartContext>
+        <Switch>
+          <Route
+            exact
+            path='/'
+            render={props => (
+              <Home
+                {...props}
+                shoppingCart={shoppingCart}
+                setShoppingCart={setShoppingCart}
+              />
+            )}
+          ></Route>
+          <Route
+            path='/cart'
+            render={props => (
+              <Cart
+                {...props}
+                shoppingCart={shoppingCart}
+                setShoppingCart={setShoppingCart}
+              />
+            )}
+          ></Route>
+        </Switch>
+      </CartContext>
     </Router>
   )
 }
