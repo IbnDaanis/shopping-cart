@@ -5,24 +5,28 @@ import { BsFillTrashFill } from 'react-icons/bs'
 import '../styles/ProductItem.scss'
 
 const ProductItem = ({ product }) => {
-  const { shoppingCart, setShoppingCart } = useContext(CartItemsContext)
+  const {
+    shoppingCart: { cartItems },
+    setShoppingCart,
+  } = useContext(CartItemsContext)
   const [qty, setQty] = useState(1)
+
   const handleClick = product => {
     if (qty > 10) return
     setQty(qty => qty + 1)
-    const existItem = shoppingCart.cartItems.find(
-      item => item.product === product.name
-    )
+
+    const existItem = cartItems.find(item => item.product === product.name)
+
     if (existItem) {
       setShoppingCart({
-        cartItems: shoppingCart.cartItems.map(item =>
+        cartItems: cartItems.map(item =>
           item.product === existItem.product ? { ...item, qty } : item
         ),
       })
     } else {
       setShoppingCart({
         cartItems: [
-          ...shoppingCart.cartItems,
+          ...cartItems,
           {
             product: product.name,
             path: product.path,
@@ -33,6 +37,7 @@ const ProductItem = ({ product }) => {
       })
     }
   }
+
   return (
     <div className='product'>
       <div className='product-image'>
