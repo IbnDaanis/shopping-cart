@@ -54,7 +54,7 @@ const Cart = ({ history }) => {
       </div>
       {cartItems.length > 0 && (
         <div className='checkout'>
-          <h2 className='total'>Total: £{totalPrice}</h2>
+          <h2 className='total'>Total: £{totalPrice()}</h2>
           <button className='place-order' onClick={checkout}>
             Place Order
           </button>
