@@ -1,8 +1,9 @@
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import PropTypes from 'prop-types'
 import '../styles/ProductItem.scss'
-
-const ProductItem = ({ shoppingCart, setShoppingCart, product }) => {
+import { CartItemsContext } from '../context/CartContext'
+const ProductItem = ({ product }) => {
+  const { shoppingCart, setShoppingCart } = useContext(CartItemsContext)
   const [qty, setQty] = useState(1)
   const handleClick = product => {
     if (qty > 10) return

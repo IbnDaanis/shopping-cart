@@ -1,9 +1,11 @@
+import { useContext } from 'react'
 import { NavLink, Link } from 'react-router-dom'
-import PropTypes from 'prop-types'
-import '../styles/Navbar.scss'
 import { AiOutlineShoppingCart } from 'react-icons/ai'
+import { CartItemsContext } from '../context/CartContext'
+import '../styles/Navbar.scss'
 
-const Navbar = ({ totalItems }) => {
+const Navbar = () => {
+  const { totalItems } = useContext(CartItemsContext)
   return (
     <header>
       <nav className='navbar'>
@@ -31,10 +33,6 @@ const Navbar = ({ totalItems }) => {
       </nav>
     </header>
   )
-}
-
-Navbar.propTypes = {
-  totalItems: PropTypes.number,
 }
 
 export default Navbar

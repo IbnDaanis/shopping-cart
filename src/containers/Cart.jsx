@@ -1,7 +1,11 @@
 import PropTypes from 'prop-types'
-import '../styles/Cart.scss'
+import { useContext } from 'react'
 import { BsFillTrashFill } from 'react-icons/bs'
-const Cart = ({ shoppingCart, setShoppingCart, history }) => {
+import { CartItemsContext } from '../context/CartContext'
+import '../styles/Cart.scss'
+
+const Cart = ({ history }) => {
+  const { shoppingCart, setShoppingCart } = useContext(CartItemsContext)
   const updateQuantity = (target, index) => {
     setShoppingCart({
       cartItems: shoppingCart.cartItems.map((x, i) =>
@@ -83,8 +87,6 @@ const Cart = ({ shoppingCart, setShoppingCart, history }) => {
 }
 
 Cart.propTypes = {
-  shoppingCart: PropTypes.object,
-  setShoppingCart: PropTypes.func,
   history: PropTypes.object,
 }
 
