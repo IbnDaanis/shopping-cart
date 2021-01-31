@@ -3,9 +3,10 @@ import React, { useState, useEffect } from 'react'
 export const CartItemsContext = React.createContext('')
 
 const CartContext = ({ children }) => {
-  const [shoppingCart, setShoppingCart] = useState({
-    cartItems: [],
-  })
+  const initialShoppingCart = JSON.parse(
+    localStorage.getItem('shoppingCart')
+  ) || { cartItems: [] }
+  const [shoppingCart, setShoppingCart] = useState(initialShoppingCart)
 
   const [totalItems, setTotalItems] = useState(0)
 
@@ -14,6 +15,7 @@ const CartContext = ({ children }) => {
     setTotalItems(
       shoppingCart.cartItems.reduce((acc, item) => acc + item.qty, 0)
     )
+    localStorage.setItem('shoppingCart', JSON.stringify(shoppingCart))
   }, [shoppingCart, totalItems])
 
   return (

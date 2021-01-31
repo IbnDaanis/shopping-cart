@@ -6,6 +6,7 @@
 
 - Used React Router for two pages
 - Functional shopping cart
+- Cart is saved with local storage
 - Simple and clean design
 
 ## Preview:
