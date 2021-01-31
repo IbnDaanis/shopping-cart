@@ -5,11 +5,14 @@ import { CartItemsContext } from '../context/CartContext'
 import '../styles/Cart.scss'
 
 const Cart = ({ history }) => {
-  const { shoppingCart, setShoppingCart } = useContext(CartItemsContext)
+  const {
+    shoppingCart: { cartItems },
+    setShoppingCart,
+  } = useContext(CartItemsContext)
 
   const updateQuantity = (target, index) => {
     setShoppingCart({
-      cartItems: shoppingCart.cartItems.map((x, i) =>
+      cartItems: cartItems.map((x, i) =>
         i === index ? { ...x, qty: +target.value } : x
       ),
     })
@@ -17,21 +20,27 @@ const Cart = ({ history }) => {
 
   const removeProductFromCart = product => {
     setShoppingCart({
-      cartItems: shoppingCart.cartItems.filter(
-        item => item.product !== product.product
-      ),
+      cartItems: cartItems.filter(item => item.product !== product.product),
     })
   }
+
+  const checkout = () => {
+    setShoppingCart({ cartItems: [] })
+    history.push('/')
+  }
+
+  const totalPrice = () =>
+    cartItems.reduce((acc, item) => acc + item.qty * item.price, 0).toFixed(2)
 
   return (
     <section className='cart-section'>
       <h1 className='title'>Cart</h1>
       <div className='products'>
-        {!shoppingCart.cartItems.length ? (
+        {!cartItems.length ? (
           <h1>There are no items in your cart</h1>
         ) : (
           <>
-            {shoppingCart.cartItems.map((item, index) => (
+            {cartItems.map((item, index) => (
               <ProductItemInCart
                 key={index}
                 item={item}
@@ -43,21 +52,10 @@ const Cart = ({ history }) => {
           </>
         )}
       </div>
-      {shoppingCart.cartItems.length > 0 && (
+      {cartItems.length > 0 && (
         <div className='checkout'>
-          <h2 className='total'>
-            Total: £
-            {shoppingCart.cartItems
-              .reduce((acc, item) => acc + item.qty * item.price, 0)
-              .toFixed(2)}
-          </h2>
-          <button
-            className='place-order'
-            onClick={() => {
-              setShoppingCart({ cartItems: [] })
-              history.push('/')
-            }}
-          >
+          <h2 className='total'>Total: £{totalPrice}</h2>
+          <button className='place-order' onClick={checkout}>
             Place Order
           </button>
         </div>
