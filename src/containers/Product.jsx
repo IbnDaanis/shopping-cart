@@ -1,9 +1,10 @@
 import { useState, useContext } from 'react'
 import { products } from '../data/products'
 import { CartItemsContext } from '../context/CartContext'
+import { Link } from 'react-router-dom'
 import '../styles/Product.scss'
 
-const Product = ({ match }) => {
+const Product = ({ match, history }) => {
   const item = products[match.params.id]
 
   const {
@@ -13,12 +14,9 @@ const Product = ({ match }) => {
 
   const cartItem = cartItems.find(cartItem => cartItem.product === item.name)
 
-  console.log({ cartItem })
   const [qty, setQty] = useState(cartItem ? cartItem.qty : 1)
 
   const handleClick = product => {
-    if (qty > 10) return
-    setQty(qty => qty + 1)
     console.log({ qty })
     const existItem = cartItems.find(item => item.product === product.name)
 
@@ -41,9 +39,15 @@ const Product = ({ match }) => {
         ],
       })
     }
+
+    history.push('/cart')
   }
+
   return (
     <div className='product-container'>
+      <button className='back-button'>
+        <Link to='/'>Go Back</Link>
+      </button>
       <div className='product-details'>
         <div className='product-details-image'>
           <img src={item.path} alt={item.name} />
@@ -51,6 +55,20 @@ const Product = ({ match }) => {
         <div className='product-details-description'>
           <h1 className='title'>{item.name}</h1>
           <p className='details'>{item.details}</p>
+          <div className='quantity'>
+            <label htmlFor='quantity'>Quantity: </label>
+            <select
+              value={qty}
+              onChange={({ target }) => setQty(+target.value)}
+              id='quantity'
+            >
+              {[1, 2, 3, 4, 5, 6, 8, 9, 10].map(number => (
+                <option key={number} defaultValue={qty}>
+                  {number}
+                </option>
+              ))}
+            </select>
+          </div>
           <div className='add-to-cart'>
             <button
               className='add-to-cart-button'
