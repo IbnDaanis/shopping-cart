@@ -2,6 +2,7 @@ import { useContext } from 'react'
 import { NavLink, Link } from 'react-router-dom'
 import { AiOutlineShoppingCart } from 'react-icons/ai'
 import { CartItemsContext } from '../context/CartContext'
+import logo from '../assets/logo.png'
 import '../styles/Navbar.scss'
 
 const Navbar = () => {
@@ -12,7 +13,7 @@ const Navbar = () => {
         <div className='container'>
           <div className='logo'>
             <Link to='/' title='Home'>
-              <img src='./assets/favicon.png' alt='Logo' />
+              <img src={logo} alt='Logo' />
               <h1>Friedrik</h1>
             </Link>
           </div>

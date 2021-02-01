@@ -8,6 +8,11 @@ const Product = ({ match }) => {
   return (
     <div className='product-container'>
       <h1 className='title'>{products[id].name}</h1>
+      <div className='product-details'>
+        <div className='product-details-image'>
+          <img src={products[id].path} alt={products[id].name} />
+        </div>
+      </div>
     </div>
   )
 }
