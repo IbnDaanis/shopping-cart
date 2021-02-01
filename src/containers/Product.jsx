@@ -45,48 +45,65 @@ const Product = ({ match, history }) => {
     history.push('/cart')
   }
 
+  const transition = { ease: 'easeInOut' }
+
   return (
-    <motion.div
-      className='product-container'
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-    >
-      <button className='back-button'>
-        <Link to='/'>Go Back</Link>
-      </button>
-      <div className='product-details'>
-        <div className='product-details-image'>
-          <img src={item.path} alt={item.name} />
+    <div className='product-screen'>
+      <motion.div
+        className='product-container'
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ ...transition, duration: 1.5 }}
+      >
+        <button className='back-button'>
+          <Link to='/'>Go Back</Link>
+        </button>
+        <div className='product-details'>
+          <motion.div
+            className='product-details-image'
+            initial={{ x: '-100%' }}
+            animate={{ x: 0 }}
+            exit={{ x: '-100%' }}
+            transition={{ ...transition, duration: 1 }}
+          >
+            <img src={item.path} alt={item.name} />
+          </motion.div>
+          <motion.div
+            className='product-details-description'
+            initial={{ x: '100%' }}
+            animate={{ x: 0 }}
+            exit={{ x: '130%' }}
+            transition={{ ...transition, duration: 1, delay: 0.1 }}
+          >
+            <h1 className='title'>{item.name}</h1>
+            <p className='details'>{item.details}</p>
+            <div className='quantity'>
+              <label htmlFor='quantity'>Quantity: </label>
+              <select
+                value={qty}
+                onChange={({ target }) => setQty(+target.value)}
+                id='quantity'
+              >
+                {[1, 2, 3, 4, 5, 6, 8, 9, 10].map(number => (
+                  <option key={number} defaultValue={qty}>
+                    {number}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <div className='add-to-cart'>
+              <button
+                className='add-to-cart-button'
+                onClick={() => handleClick(item)}
+              >
+                Add to Cart
+              </button>
+            </div>
+          </motion.div>
         </div>
-        <div className='product-details-description'>
-          <h1 className='title'>{item.name}</h1>
-          <p className='details'>{item.details}</p>
-          <div className='quantity'>
-            <label htmlFor='quantity'>Quantity: </label>
-            <select
-              value={qty}
-              onChange={({ target }) => setQty(+target.value)}
-              id='quantity'
-            >
-              {[1, 2, 3, 4, 5, 6, 8, 9, 10].map(number => (
-                <option key={number} defaultValue={qty}>
-                  {number}
-                </option>
-              ))}
-            </select>
-          </div>
-          <div className='add-to-cart'>
-            <button
-              className='add-to-cart-button'
-              onClick={() => handleClick(item)}
-            >
-              Add to Cart
-            </button>
-          </div>
-        </div>
-      </div>
-    </motion.div>
+      </motion.div>
+    </div>
   )
 }
 

@@ -14,21 +14,29 @@ const App = () => {
       <Router>
         <Navbar />
         <ScrollToTop />
-        <AnimatePresence exitBeforeEnter={true}>
-          <Switch>
-            <Route exact path='/' render={props => <Home {...props} />}></Route>
-            <Route
-              exact
-              path='/cart'
-              render={props => <Cart {...props} />}
-            ></Route>
-            <Route
-              exact
-              path='/products/:id'
-              render={props => <Product {...props} />}
-            ></Route>
-          </Switch>
-        </AnimatePresence>
+        <Route
+          render={({ location }) => (
+            <AnimatePresence initial={false} exitBeforeEnter={true}>
+              <Switch location={location} key={location.pathname}>
+                <Route
+                  exact
+                  path='/'
+                  render={props => <Home {...props} />}
+                ></Route>
+                <Route
+                  exact
+                  path='/cart'
+                  render={props => <Cart {...props} />}
+                ></Route>
+                <Route
+                  exact
+                  path='/products/:id'
+                  render={props => <Product {...props} />}
+                ></Route>
+              </Switch>
+            </AnimatePresence>
+          )}
+        ></Route>
       </Router>
     </CartContext>
   )

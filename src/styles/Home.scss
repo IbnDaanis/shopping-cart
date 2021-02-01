@@ -1,8 +1,16 @@
+.home-container {
+  display: block;
+  height: 100vh;
+  margin-top: 60px;
+  overflow-y: auto;
+  -webkit-overflow-y: auto;
+}
 .home {
   width: 1280px;
   max-width: 95%;
-  margin: 3rem auto 0;
+  margin: 0 auto 0;
   padding: 2rem 0 4rem;
+
   .title {
     font-size: 4rem;
   }
