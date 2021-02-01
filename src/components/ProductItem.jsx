@@ -1,45 +1,10 @@
-import { useState, useContext } from 'react'
 import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
-import { CartItemsContext } from '../context/CartContext'
+
 import { BsFillTrashFill } from 'react-icons/bs'
 import '../styles/ProductItem.scss'
 
 const ProductItem = ({ product, id }) => {
-  const {
-    shoppingCart: { cartItems },
-    setShoppingCart,
-  } = useContext(CartItemsContext)
-  const [qty, setQty] = useState(1)
-
-  const handleClick = product => {
-    if (qty > 10) return
-    setQty(qty => qty + 1)
-
-    const existItem = cartItems.find(item => item.product === product.name)
-
-    if (existItem) {
-      setShoppingCart({
-        cartItems: cartItems.map(item =>
-          item.product === existItem.product ? { ...item, qty } : item
-        ),
-      })
-    } else {
-      setShoppingCart({
-        cartItems: [
-          ...cartItems,
-          {
-            product: product.name,
-            path: product.path,
-            price: product.price,
-            id,
-            qty,
-          },
-        ],
-      })
-    }
-  }
-
   return (
     <div className='product'>
       <div className='product-image'>
@@ -51,21 +16,11 @@ const ProductItem = ({ product, id }) => {
         <h2 className='product-details-title'>{product.name}</h2>
         <h3 className='product-details-price'>£{product.price.toFixed(2)}</h3>
       </div>
-      <div className='add-to-cart'>
-        <button
-          className='add-to-cart-button'
-          onClick={() => handleClick(product)}
-        >
-          Add to Cart
-        </button>
-      </div>
     </div>
   )
 }
 
 ProductItem.propTypes = {
-  shoppingCart: PropTypes.object,
-  setShoppingCart: PropTypes.func,
   product: PropTypes.object,
 }
 
