@@ -16,7 +16,7 @@ const App = () => {
         <ScrollToTop />
         <Route
           render={({ location }) => (
-            <AnimatePresence initial={false} exitBeforeEnter={true}>
+            <AnimatePresence exitBeforeEnter={true}>
               <Switch location={location} key={location.pathname}>
                 <Route
                   exact

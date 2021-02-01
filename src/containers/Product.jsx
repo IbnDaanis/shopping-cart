@@ -56,9 +56,9 @@ const Product = ({ match, history }) => {
         exit={{ opacity: 0 }}
         transition={{ ...transition, duration: 1.5 }}
       >
-        <button className='back-button'>
-          <Link to='/'>Go Back</Link>
-        </button>
+        <Link to='/'>
+          <button className='back-button'>Go Back</button>
+        </Link>
         <div className='product-details'>
           <motion.div
             className='product-details-image'

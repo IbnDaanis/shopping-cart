@@ -9,7 +9,7 @@
   width: 1280px;
   max-width: 95%;
   margin: 0 auto 0;
-  padding: 2rem 0 4rem;
+  padding: 2rem 0 10rem;
 
   .title {
     font-size: 4rem;
@@ -29,6 +29,21 @@
     }
     @media (max-width: 410px) {
       grid-template-columns: repeat(1, 1fr);
+    }
+
+    .product-item-container {
+      position: relative;
+      overflow: hidden;
+      .product-cover {
+        position: absolute;
+        z-index: 50;
+        height: 100%;
+        width: 100%;
+        top: 0;
+        left: 0;
+        background: white;
+        transform: translateY(100%);
+      }
     }
   }
 }
