@@ -8,7 +8,7 @@ const Home = () => {
       <h1 className='title noselect'>Home</h1>
       <div className='products'>
         {products.map((product, index) => (
-          <ProductItem key={index} product={product} />
+          <ProductItem key={index} product={product} id={index} />
         ))}
       </div>
     </section>

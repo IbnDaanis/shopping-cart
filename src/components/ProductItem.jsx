@@ -1,10 +1,11 @@
 import { useState, useContext } from 'react'
+import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import { CartItemsContext } from '../context/CartContext'
 import { BsFillTrashFill } from 'react-icons/bs'
 import '../styles/ProductItem.scss'
 
-const ProductItem = ({ product }) => {
+const ProductItem = ({ product, id }) => {
   const {
     shoppingCart: { cartItems },
     setShoppingCart,
@@ -31,6 +32,7 @@ const ProductItem = ({ product }) => {
             product: product.name,
             path: product.path,
             price: product.price,
+            id,
             qty,
           },
         ],
@@ -41,7 +43,9 @@ const ProductItem = ({ product }) => {
   return (
     <div className='product'>
       <div className='product-image'>
-        <img src={product.path} alt={product.name} draggable='false' />
+        <Link to={`/products/${id}`}>
+          <img src={product.path} alt={product.name} draggable='false' />
+        </Link>
       </div>
       <div className='product-details'>
         <h2 className='product-details-title'>{product.name}</h2>

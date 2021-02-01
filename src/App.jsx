@@ -4,6 +4,7 @@ import Cart from './containers/Cart'
 import Navbar from './components/Navbar'
 import ScrollToTop from './components/ScrollToTop'
 import CartContext from './context/CartContext'
+import Product from './containers/Product'
 
 const App = () => {
   return (
@@ -17,6 +18,11 @@ const App = () => {
             exact
             path='/cart'
             render={props => <Cart {...props} />}
+          ></Route>
+          <Route
+            exact
+            path='/products/:id'
+            render={props => <Product {...props} />}
           ></Route>
         </Switch>
       </Router>
