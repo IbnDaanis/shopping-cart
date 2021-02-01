@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion'
 import PropTypes from 'prop-types'
 import { useContext } from 'react'
 import { ProductItemInCart } from '../components/ProductItem'
@@ -33,34 +34,40 @@ const Cart = ({ history }) => {
     cartItems.reduce((acc, item) => acc + item.qty * item.price, 0).toFixed(2)
 
   return (
-    <section className='cart-section'>
-      <h1 className='title'>Cart</h1>
-      <div className='products'>
-        {!cartItems.length ? (
-          <h1>There are no items in your cart</h1>
-        ) : (
-          <>
-            {cartItems.map((item, index) => (
-              <ProductItemInCart
-                key={index}
-                item={item}
-                index={index}
-                updateQuantity={updateQuantity}
-                removeProductFromCart={removeProductFromCart}
-              />
-            ))}
-          </>
-        )}
-      </div>
-      {cartItems.length > 0 && (
-        <div className='checkout'>
-          <h2 className='total'>Total: £{totalPrice()}</h2>
-          <button className='place-order' onClick={checkout}>
-            Place Order
-          </button>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+    >
+      <section className='cart-section'>
+        <h1 className='title'>Cart</h1>
+        <div className='products'>
+          {!cartItems.length ? (
+            <h1>There are no items in your cart</h1>
+          ) : (
+            <>
+              {cartItems.map((item, index) => (
+                <ProductItemInCart
+                  key={index}
+                  item={item}
+                  index={index}
+                  updateQuantity={updateQuantity}
+                  removeProductFromCart={removeProductFromCart}
+                />
+              ))}
+            </>
+          )}
         </div>
-      )}
-    </section>
+        {cartItems.length > 0 && (
+          <div className='checkout'>
+            <h2 className='total'>Total: £{totalPrice()}</h2>
+            <button className='place-order' onClick={checkout}>
+              Place Order
+            </button>
+          </div>
+        )}
+      </section>
+    </motion.div>
   )
 }
 

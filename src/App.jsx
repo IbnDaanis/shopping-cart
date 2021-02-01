@@ -6,25 +6,29 @@ import ScrollToTop from './components/ScrollToTop'
 import CartContext from './context/CartContext'
 import Product from './containers/Product'
 
+import { AnimatePresence } from 'framer-motion'
+
 const App = () => {
   return (
     <CartContext>
       <Router>
         <Navbar />
         <ScrollToTop />
-        <Switch>
-          <Route exact path='/' render={props => <Home {...props} />}></Route>
-          <Route
-            exact
-            path='/cart'
-            render={props => <Cart {...props} />}
-          ></Route>
-          <Route
-            exact
-            path='/products/:id'
-            render={props => <Product {...props} />}
-          ></Route>
-        </Switch>
+        <AnimatePresence exitBeforeEnter={true}>
+          <Switch>
+            <Route exact path='/' render={props => <Home {...props} />}></Route>
+            <Route
+              exact
+              path='/cart'
+              render={props => <Cart {...props} />}
+            ></Route>
+            <Route
+              exact
+              path='/products/:id'
+              render={props => <Product {...props} />}
+            ></Route>
+          </Switch>
+        </AnimatePresence>
       </Router>
     </CartContext>
   )

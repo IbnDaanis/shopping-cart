@@ -3,6 +3,7 @@ import { products } from '../data/products'
 import { CartItemsContext } from '../context/CartContext'
 import { Link } from 'react-router-dom'
 import '../styles/Product.scss'
+import { motion } from 'framer-motion'
 
 const Product = ({ match, history }) => {
   const item = products[match.params.id]
@@ -45,7 +46,12 @@ const Product = ({ match, history }) => {
   }
 
   return (
-    <div className='product-container'>
+    <motion.div
+      className='product-container'
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+    >
       <button className='back-button'>
         <Link to='/'>Go Back</Link>
       </button>
@@ -80,7 +86,7 @@ const Product = ({ match, history }) => {
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   )
 }
 
