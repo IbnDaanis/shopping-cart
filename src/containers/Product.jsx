@@ -35,6 +35,7 @@ const Product = ({ match, history }) => {
             product: product.name,
             price: product.price,
             qty,
+            path: product.path,
           },
         ],
       })

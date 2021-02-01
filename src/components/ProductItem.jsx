@@ -32,10 +32,13 @@ export const ProductItemInCart = ({
   updateQuantity,
   removeProductFromCart,
 }) => {
+  console.log(item)
   return (
     <div className='item' key={item.product}>
       <div className='product-img'>
-        <img src={item.path} alt={item.product} />
+        <Link to={`/products/${item.id}`}>
+          <img src={item.path} alt={item.product} />
+        </Link>
       </div>
       <h2 className='product-name'>{item.product}</h2>
       <div className='product-qty'>
