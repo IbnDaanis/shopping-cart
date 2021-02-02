@@ -17,8 +17,8 @@
   }
 
   .back-button {
-    background: #efefef;
-    color: black;
+    background: var(--borders);
+    color: var(--foreground);
     cursor: pointer;
     margin-left: 1rem;
     width: 88px;
@@ -29,7 +29,8 @@
     font-weight: 500;
     transition: 0.2s ease-in-out;
     &:hover {
-      filter: brightness(0.9);
+      background: var(--foreground);
+      color: var(--borders);
     }
   }
 
@@ -59,16 +60,16 @@
       overflow: hidden;
       align-self: flex-start;
       padding: 1rem;
-      border: 1px solid #e6e6e6;
+      border: 1px solid var(--borders);
       .title {
         font-size: 2.5rem;
       }
       .details {
         margin-top: 2rem;
         font-size: 1.2rem;
-        color: #333;
+        color: var(--foreground-secondary);
         padding-bottom: 2rem;
-        border-bottom: 1px solid #e6e6e6;
+        border-bottom: 1px solid var(--borders);
       }
       .quantity {
         margin: 2rem 0 1rem;

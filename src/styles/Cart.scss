@@ -23,7 +23,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      border: 1px solid #e6e6e6;
+      border: 1px solid var(--borders);
       border-radius: 3px;
       @media (max-width: 700px) {
         flex-direction: column;
