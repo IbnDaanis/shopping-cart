@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
-import { motion } from 'framer-motion'
 import { BsFillTrashFill } from 'react-icons/bs'
 import '../styles/ProductItem.scss'
 
@@ -34,17 +33,7 @@ const ProductItemInCart = ({
   removeProductFromCart,
 }) => {
   return (
-    <motion.div
-      className='item'
-      key={item.product}
-      exit={{
-        opacity: 0,
-        transition: {
-          duration: 0.5,
-          ease: 'easeOut',
-        },
-      }}
-    >
+    <div className='item'>
       <div className='product-img'>
         <Link to={`/products/${item.id}`}>
           <img src={item.path} alt={item.product} />
@@ -73,7 +62,7 @@ const ProductItemInCart = ({
       >
         <BsFillTrashFill />
       </button>
-    </motion.div>
+    </div>
   )
 }
 

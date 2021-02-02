@@ -92,9 +92,8 @@ const Product = ({ match }) => {
               src={item.path}
               alt={item.name}
               whileHover={{
-                duration: 1,
                 scale: 1.1,
-                transition: { ease: 'easeIn' },
+                transition: { ease: 'easeIn', duration: 0.25 },
               }}
             />
           </motion.div>
@@ -124,7 +123,10 @@ const Product = ({ match }) => {
               </div>
               <div className='price noselect'>
                 <motion.h2
-                  whileHover={{ scale: 1.1, x: -11, color: 'rgb(0,206,245)' }}
+                  whileHover={{
+                    scale: 1.2,
+                    color: 'rgb(0,206,245)',
+                  }}
                 >
                   £{item.price.toFixed(2)}
                 </motion.h2>

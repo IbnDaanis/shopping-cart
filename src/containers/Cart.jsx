@@ -1,5 +1,5 @@
 import { useContext } from 'react'
-import { motion, AnimateSharedLayout, AnimatePresence } from 'framer-motion'
+import { motion, AnimateSharedLayout } from 'framer-motion'
 import PropTypes from 'prop-types'
 import { ProductItemInCart } from '../components/ProductItem'
 import { CartItemsContext } from '../context/CartContext'
@@ -51,7 +51,7 @@ const Cart = ({ history }) => {
             {!cartItems.length ? (
               <h1>There are no items in your cart</h1>
             ) : (
-              <AnimatePresence>
+              <>
                 {cartItems.map((item, index) => (
                   <motion.div key={index}>
                     <ProductItemInCart
@@ -62,7 +62,7 @@ const Cart = ({ history }) => {
                     />
                   </motion.div>
                 ))}
-              </AnimatePresence>
+              </>
             )}
           </div>
           {cartItems.length > 0 && (
