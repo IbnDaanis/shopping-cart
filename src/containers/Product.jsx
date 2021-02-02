@@ -78,19 +78,24 @@ const Product = ({ match, history }) => {
           >
             <h1 className='title'>{item.name}</h1>
             <p className='details'>{item.details}</p>
-            <div className='quantity'>
-              <label htmlFor='quantity'>Quantity: </label>
-              <select
-                value={qty}
-                onChange={({ target }) => setQty(+target.value)}
-                id='quantity'
-              >
-                {[1, 2, 3, 4, 5, 6, 8, 9, 10].map(number => (
-                  <option key={number} defaultValue={qty}>
-                    {number}
-                  </option>
-                ))}
-              </select>
+            <div className='bottom-details'>
+              <div className='quantity'>
+                <label htmlFor='quantity'>Quantity: </label>
+                <select
+                  value={qty}
+                  onChange={({ target }) => setQty(+target.value)}
+                  id='quantity'
+                >
+                  {[1, 2, 3, 4, 5, 6, 8, 9, 10].map(number => (
+                    <option key={number} defaultValue={qty}>
+                      {number}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <div className='price'>
+                <h2>£{item.price.toFixed(2)}</h2>
+              </div>
             </div>
             <div className='add-to-cart'>
               <button

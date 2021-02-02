@@ -71,21 +71,35 @@
         padding-bottom: 2rem;
         border-bottom: 1px solid var(--borders);
       }
-      .quantity {
+      .bottom-details {
         margin: 2rem 0 1rem;
-        label {
-          font-size: 1.2rem;
-          font-weight: 500;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        .quantity {
+          label {
+            font-size: 1.2rem;
+            font-weight: 500;
+          }
+          select {
+            font-size: 1rem;
+            text-align-last: center;
+            padding: 0.2rem 0.4rem 0.2rem 0.3rem;
+            border-radius: 3px;
+            border: 1px solid var(--borders);
+            color: var(--foreground);
+            background: var(--background);
+            outline: none;
+            cursor: pointer;
+          }
         }
-        select {
-          font-size: 1rem;
-          padding: 0.2rem;
-          border-radius: 3px;
-          border: 1px solid #c2c2c2;
-          outline: none;
-          cursor: pointer;
+        .price {
+          h2 {
+            font-size: 2.5rem;
+          }
         }
       }
+
       .add-to-cart {
         .add-to-cart-button {
           display: block;
