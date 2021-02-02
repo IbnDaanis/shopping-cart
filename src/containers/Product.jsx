@@ -65,7 +65,7 @@ const Product = ({ match }) => {
   }
 
   return (
-    <div className='product-screen'>
+    <div className='screen'>
       <motion.div className='product-container'>
         <Link to='/'>
           <motion.button

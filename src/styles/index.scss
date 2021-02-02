@@ -63,3 +63,30 @@ button {
   -ms-user-select: none;
   user-select: none;
 }
+
+.screen {
+  display: block;
+  height: calc(100vh - 61px);
+  margin-top: 61px;
+  overflow-y: auto;
+  -webkit-overflow-y: auto;
+  &::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+    cursor: pointer;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: rgb(100, 100, 100);
+    border-radius: 10px;
+    width: 6px;
+    transition: 0.2s ease-in-out;
+    filter: brightness(1.4);
+  }
+  &::-webkit-scrollbar-thumb:hover {
+    background: rgb(120, 120, 120);
+  }
+  &::-webkit-scrollbar-track {
+    width: 20px;
+    background: var(--borders);
+  }
+}
