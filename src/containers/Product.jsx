@@ -1,4 +1,5 @@
 import { useState, useContext } from 'react'
+import PropTypes from 'prop-types'
 import { products } from '../data/products'
 import { CartItemsContext } from '../context/CartContext'
 import { Link } from 'react-router-dom'
@@ -122,7 +123,9 @@ const Product = ({ match }) => {
                 </select>
               </div>
               <div className='price noselect'>
-                <motion.h2 whileHover={{ scale: 1.1, color: 'rgb(0,206,245)' }}>
+                <motion.h2
+                  whileHover={{ scale: 1.1, x: -11, color: 'rgb(0,206,245)' }}
+                >
                   £{item.price.toFixed(2)}
                 </motion.h2>
               </div>
@@ -145,6 +148,10 @@ const Product = ({ match }) => {
       </motion.div>
     </div>
   )
+}
+
+Product.propTypes = {
+  match: PropTypes.object,
 }
 
 export default Product

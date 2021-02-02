@@ -27,7 +27,7 @@ ProductItem.propTypes = {
 
 export default ProductItem
 
-export const ProductItemInCart = ({
+const ProductItemInCart = ({
   item,
   index,
   updateQuantity,
@@ -76,3 +76,12 @@ export const ProductItemInCart = ({
     </motion.div>
   )
 }
+
+ProductItemInCart.propTypes = {
+  item: PropTypes.object,
+  index: PropTypes.number,
+  updateQuantity: PropTypes.func,
+  removeProductFromCart: PropTypes.func,
+}
+
+export { ProductItemInCart }
