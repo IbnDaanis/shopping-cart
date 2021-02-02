@@ -36,6 +36,7 @@ const Cart = ({ history }) => {
   const transition = { ease: [0.43, 0.13, 0.23, 0.96] }
   return (
     <motion.div
+      className='cart-screen'
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: 10 }}

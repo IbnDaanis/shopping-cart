@@ -1,8 +1,19 @@
+.cart-screen {
+  height: 100vh;
+  margin-top: 60px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-y: auto;
+}
+
 .cart-section {
   width: 1280px;
   max-width: 95%;
-  margin: 60px auto 0;
+  margin: 0 auto;
   padding: 2rem 0 4rem;
+  @media (max-width: 1000px) {
+    padding: 2rem 0 15rem;
+  }
   .title {
     font-size: 4rem;
   }

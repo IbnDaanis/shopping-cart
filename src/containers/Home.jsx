@@ -30,11 +30,11 @@ const item = {
 const Home = () => {
   return (
     <motion.div
+      className='home-screen'
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: 10 }}
       transition={{ ...transition, duration: 0.5 }}
-      className='home-container'
     >
       <section className='home'>
         <h1 className='title noselect'>Home</h1>
