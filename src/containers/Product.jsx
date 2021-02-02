@@ -45,36 +45,59 @@ const Product = ({ match, history }) => {
     history.push('/cart')
   }
 
-  const transition = { ease: 'easeInOut' }
+  const transition = { ease: [0.51, 0.1, 0.5, 0.85] }
+  const button = {
+    show: {
+      opacity: 1,
+      transition: {
+        duration: 1,
+        ease: 'backInOut',
+        type: 'tween',
+        stiffness: 100,
+      },
+    },
+    hidden: {
+      opacity: 0,
+      transition: {
+        duration: 1,
+        ease: 'backInOut',
+        type: 'tween',
+        stiffness: 100,
+      },
+    },
+  }
 
   return (
     <div className='product-screen'>
-      <motion.div
-        className='product-container'
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        transition={{ ...transition, duration: 1.5 }}
-      >
+      <motion.div className='product-container'>
         <Link to='/'>
-          <button className='back-button'>Go Back</button>
+          <motion.button
+            className='back-button'
+            variants={button}
+            initial='hidden'
+            animate='show'
+            exit='hidden'
+            whileHover={{ scale: 1.05 }}
+          >
+            Go Back
+          </motion.button>
         </Link>
         <div className='product-details'>
           <motion.div
             className='product-details-image'
-            initial={{ x: '-100%' }}
+            initial={{ x: '-140%' }}
             animate={{ x: 0 }}
-            exit={{ x: '-100%' }}
+            exit={{ x: '-140%' }}
             transition={{ ...transition, duration: 1 }}
           >
             <img src={item.path} alt={item.name} />
           </motion.div>
           <motion.div
             className='product-details-description'
-            initial={{ x: '100%' }}
+            initial={{ x: '130%' }}
             animate={{ x: 0 }}
             exit={{ x: '130%' }}
-            transition={{ ...transition, duration: 1, delay: 0.1 }}
+            transition={{ ...transition, duration: 1 }}
           >
             <h1 className='title'>{item.name}</h1>
             <p className='details'>{item.details}</p>
