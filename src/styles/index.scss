@@ -69,6 +69,7 @@ button {
   height: calc(100vh - 61px);
   margin-top: 61px;
   overflow-y: auto;
+  overflow-x: hidden;
   -webkit-overflow-y: auto;
   &::-webkit-scrollbar {
     width: 10px;
