@@ -32,7 +32,6 @@ export const ProductItemInCart = ({
   updateQuantity,
   removeProductFromCart,
 }) => {
-  console.log(item)
   return (
     <div className='item' key={item.product}>
       <div className='product-img'>

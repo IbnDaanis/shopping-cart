@@ -1,12 +1,22 @@
-import { useContext } from 'react'
+import { useState, useContext, useEffect } from 'react'
 import { NavLink, Link } from 'react-router-dom'
 import { AiOutlineShoppingCart } from 'react-icons/ai'
 import { CartItemsContext } from '../context/CartContext'
+import { motion } from 'framer-motion'
 import logo from '../assets/logo.png'
 import '../styles/Navbar.scss'
 
 const Navbar = () => {
   const { totalItems } = useContext(CartItemsContext)
+
+  const [updated, setUpdated] = useState(false)
+
+  useEffect(() => {
+    setUpdated(true)
+    setTimeout(() => {
+      setUpdated(false)
+    }, 300)
+  }, [totalItems])
   return (
     <header>
       <nav className='navbar'>
@@ -18,17 +28,30 @@ const Navbar = () => {
             </Link>
           </div>
           <ul className='links'>
-            <li className='home-link'>
+            <motion.li className='home-link' whileHover={{ scale: 1.05 }}>
               <NavLink exact to='/' activeClassName='active' title='Home'>
                 Home
               </NavLink>
-            </li>
-            <li className='cart-link'>
+            </motion.li>
+            <motion.li
+              className='cart-link'
+              whileHover={{ scale: 1.05 }}
+              initial={{ scale: 1 }}
+              animate={{
+                scale: updated ? 1.15 : 1,
+                transition: {
+                  duration: 0.3,
+                  ease: 'easeInOut',
+                  type: 'tween',
+                  stiffness: 100,
+                },
+              }}
+            >
               <NavLink to='/cart' activeClassName='active' title='Cart'>
                 <AiOutlineShoppingCart />
                 <span className='cart'>{totalItems}</span>
               </NavLink>
-            </li>
+            </motion.li>
           </ul>
         </div>
       </nav>

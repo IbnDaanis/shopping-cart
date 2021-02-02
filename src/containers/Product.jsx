@@ -18,7 +18,6 @@ const Product = ({ match, history }) => {
   const [qty, setQty] = useState(cartItem ? cartItem.qty : 1)
 
   const handleClick = product => {
-    console.log({ qty })
     const existItem = cartItems.find(item => item.product === product.name)
 
     if (existItem) {
