@@ -87,7 +87,15 @@ const Product = ({ match }) => {
             exit={{ x: '-140%' }}
             transition={{ ...transition, duration: 1 }}
           >
-            <img src={item.path} alt={item.name} />
+            <motion.img
+              src={item.path}
+              alt={item.name}
+              whileHover={{
+                duration: 1,
+                scale: 1.1,
+                transition: { ease: 'easeIn' },
+              }}
+            />
           </motion.div>
           <motion.div
             className='product-details-description'
@@ -113,8 +121,10 @@ const Product = ({ match }) => {
                   ))}
                 </select>
               </div>
-              <div className='price'>
-                <h2>£{item.price.toFixed(2)}</h2>
+              <div className='price noselect'>
+                <motion.h2 whileHover={{ scale: 1.1, color: 'rgb(0,206,245)' }}>
+                  £{item.price.toFixed(2)}
+                </motion.h2>
               </div>
             </div>
             <div className='add-to-cart'>
