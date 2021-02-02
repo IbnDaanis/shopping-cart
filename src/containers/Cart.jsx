@@ -33,13 +33,13 @@ const Cart = ({ history }) => {
   const totalPrice = () =>
     cartItems.reduce((acc, item) => acc + item.qty * item.price, 0).toFixed(2)
 
-  const transition = { duration: 0.5, ease: [0.43, 0.13, 0.23, 0.96] }
+  const transition = { ease: [0.43, 0.13, 0.23, 0.96] }
   return (
     <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={transition}
+      initial={{ opacity: 0, y: 10 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: 10 }}
+      transition={{ ...transition, duration: 0.5 }}
     >
       <section className='cart-section'>
         <h1 className='title'>Cart</h1>
