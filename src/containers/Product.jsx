@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 import '../styles/Product.scss'
 import { motion } from 'framer-motion'
 
-const Product = ({ match, history }) => {
+const Product = ({ match }) => {
   const item = products[match.params.id]
 
   const {
@@ -40,8 +40,6 @@ const Product = ({ match, history }) => {
         ],
       })
     }
-
-    history.push('/cart')
   }
 
   const transition = { ease: [0.51, 0.1, 0.5, 0.85] }
@@ -123,8 +121,13 @@ const Product = ({ match, history }) => {
               <button
                 className='add-to-cart-button'
                 onClick={() => handleClick(item)}
+                disabled={cartItem?.qty === 10 && qty === 10}
               >
-                Add to Cart
+                {cartItem?.qty > 0
+                  ? cartItem?.qty === 10 && qty === 10
+                    ? 'Maximum Quantity in Cart'
+                    : 'Update Quantity'
+                  : 'Add to Cart'}
               </button>
             </div>
           </motion.div>
