@@ -66,11 +66,14 @@
           font-size: 1rem;
         }
         select {
-          text-align: center;
           font-size: 1rem;
-          padding: 0 0 0 0.2rem;
+          text-align-last: center;
           width: 40px;
-          border: 1px solid #e6e6e6;
+          padding: 0.2rem 0.4rem 0.2rem 0.3rem;
+          border-radius: 3px;
+          border: 1px solid var(--borders);
+          color: var(--foreground);
+          background: var(--background);
           outline: none;
         }
       }
