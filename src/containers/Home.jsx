@@ -29,14 +29,13 @@ const item = {
 
 const Home = () => {
   return (
-    <motion.div
-      className='screen'
-      initial={{ opacity: 0, y: 10 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: 10 }}
-      transition={{ ...transition, duration: 0.5 }}
-    >
-      <section className='home'>
+    <motion.div className='screen'>
+      <motion.section
+        className='home'
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: 10 }}
+      >
         <h1 className='title noselect'>Home</h1>
         <motion.div
           className='products'
@@ -54,7 +53,7 @@ const Home = () => {
             </motion.div>
           ))}
         </motion.div>
-      </section>
+      </motion.section>
     </motion.div>
   )
 }

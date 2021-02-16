@@ -37,15 +37,14 @@ const Cart = ({ history }) => {
 
   return (
     <AnimateSharedLayout>
-      <motion.div
-        layout
-        className='screen'
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: 10 }}
-        transition={{ ...transition, duration: 0.5 }}
-      >
-        <section className='cart-section'>
+      <motion.div layout className='screen'>
+        <motion.section
+          className='cart-section'
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: 10 }}
+          transition={{ ...transition, duration: 0.5 }}
+        >
           <h1 className='title'>Cart</h1>
           <div className='products'>
             {!cartItems.length ? (
@@ -77,7 +76,7 @@ const Cart = ({ history }) => {
               </button>
             </motion.div>
           )}
-        </section>
+        </motion.section>
       </motion.div>
     </AnimateSharedLayout>
   )
