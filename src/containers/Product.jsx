@@ -43,7 +43,7 @@ const Product = ({ match }) => {
     }
   }
 
-  const transition = { ease: [0.51, 0.1, 0.5, 0.85] }
+  const transition = { ease: 'easeInOut' }
   const button = {
     show: {
       opacity: 1,
@@ -83,9 +83,9 @@ const Product = ({ match }) => {
         <div className='product-details'>
           <motion.div
             className='product-details-image'
-            initial={{ x: '-140%' }}
+            initial={{ x: '-75vw' }}
             animate={{ x: 0 }}
-            exit={{ x: '-140%' }}
+            exit={{ x: '-75vw' }}
             transition={{ ...transition, duration: 1 }}
           >
             <motion.img
@@ -99,9 +99,9 @@ const Product = ({ match }) => {
           </motion.div>
           <motion.div
             className='product-details-description'
-            initial={{ x: '130%' }}
+            initial={{ x: '75vw' }}
             animate={{ x: 0 }}
-            exit={{ x: '130%' }}
+            exit={{ x: '75vw' }}
             transition={{ ...transition, duration: 1 }}
           >
             <h1 className='title'>{item.name}</h1>
