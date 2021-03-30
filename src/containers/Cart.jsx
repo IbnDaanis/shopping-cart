@@ -13,9 +13,7 @@ const Cart = ({ history }) => {
 
   const updateQuantity = (target, index) => {
     setShoppingCart({
-      cartItems: cartItems.map((x, i) =>
-        i === index ? { ...x, qty: +target.value } : x
-      ),
+      cartItems: cartItems.map((x, i) => (i === index ? { ...x, qty: +target.value } : x)),
     })
   }
 
@@ -43,7 +41,7 @@ const Cart = ({ history }) => {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 10 }}
-          transition={{ ...transition, duration: 0.5 }}
+          transition={{ ...transition, duration: 0.75 }}
         >
           <h1 className='title'>Cart</h1>
           <div className='products'>
@@ -65,11 +63,7 @@ const Cart = ({ history }) => {
             )}
           </div>
           {cartItems.length > 0 && (
-            <motion.div
-              className='checkout'
-              layout
-              transition={{ ease: 'easeInOut', delay: 0 }}
-            >
+            <motion.div className='checkout' layout transition={{ ease: 'easeInOut', delay: 0 }}>
               <h2 className='total'>Total: £{totalPrice()}</h2>
               <button className='place-order' onClick={checkout}>
                 Place Order

@@ -43,7 +43,6 @@ const Product = ({ match }) => {
     }
   }
 
-  const transition = { ease: 'easeInOut' }
   const button = {
     show: {
       opacity: 1,
@@ -83,10 +82,10 @@ const Product = ({ match }) => {
         <div className='product-details'>
           <motion.div
             className='product-details-image'
-            initial={{ x: '-75vw' }}
-            animate={{ x: 0 }}
-            exit={{ x: '-75vw' }}
-            transition={{ ...transition, duration: 1 }}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 10 }}
+            transition={{ duration: 0.75, ease: [0.43, 0.13, 0.23, 0.96] }}
           >
             <motion.img
               src={item.path}
@@ -99,21 +98,17 @@ const Product = ({ match }) => {
           </motion.div>
           <motion.div
             className='product-details-description'
-            initial={{ x: '75vw' }}
-            animate={{ x: 0 }}
-            exit={{ x: '75vw' }}
-            transition={{ ...transition, duration: 1 }}
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 10 }}
+            transition={{ duration: 1, ease: [0.43, 0.13, 0.23, 0.96] }}
           >
             <h1 className='title'>{item.name}</h1>
             <p className='details'>{item.details}</p>
             <div className='bottom-details'>
               <div className='quantity'>
                 <label htmlFor='quantity'>Quantity: </label>
-                <select
-                  value={qty}
-                  onChange={({ target }) => setQty(+target.value)}
-                  id='quantity'
-                >
+                <select value={qty} onChange={({ target }) => setQty(+target.value)} id='quantity'>
                   {[1, 2, 3, 4, 5, 6, 8, 9, 10].map(number => (
                     <option key={number} defaultValue={qty}>
                       {number}

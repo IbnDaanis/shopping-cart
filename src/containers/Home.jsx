@@ -35,21 +35,14 @@ const Home = () => {
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: 10 }}
+        transition={{ ...transition, duration: 0.75 }}
       >
         <h1 className='title noselect'>Home</h1>
-        <motion.div
-          className='products'
-          variants={container}
-          initial='hidden'
-          animate='show'
-        >
+        <motion.div className='products' variants={container} initial='hidden' animate='show'>
           {products.map((product, index) => (
             <motion.div key={index} className='product-item-container'>
               <ProductItem product={product} id={index} />
-              <motion.div
-                className='product-cover'
-                variants={item}
-              ></motion.div>
+              <motion.div className='product-cover' variants={item}></motion.div>
             </motion.div>
           ))}
         </motion.div>
