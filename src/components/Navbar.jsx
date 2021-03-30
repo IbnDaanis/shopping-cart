@@ -15,7 +15,7 @@ const Navbar = () => {
     setUpdated(true)
     setTimeout(() => {
       setUpdated(false)
-    }, 300)
+    }, 500)
   }, [totalItems])
   return (
     <header>
@@ -39,8 +39,9 @@ const Navbar = () => {
               initial={{ scale: 1 }}
               animate={{
                 scale: updated ? 1.15 : 1,
+                color: updated ? '#02bbe0' : '#fff',
                 transition: {
-                  duration: 0.3,
+                  duration: 0.4,
                   ease: 'easeInOut',
                   type: 'tween',
                   stiffness: 100,
